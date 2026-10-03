@@ -1,0 +1,20 @@
+[Unit]
+Description=GLM-5.3-Flash NVFP4 vLLM head (rank 0, TP=2)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+# User that owns the rootless podman containers. Set to the real service user
+# (the account under which the rootless vLLM containers run).
+User=vllm
+ExecStartPre=/bin/sleep 30
+ExecStart=/home/vllm/glm53-vllm.sh 0
+RemainAfterExit=yes
+Restart=on-failure
+RestartSec=30
+TimeoutStartSec=2400
+TimeoutStopSec=120
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,30 @@
+# Secrets / sensitive config — NEVER commit these.
+# Any local env/auth file is excluded; only *.example templates are allowed.
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+*.secret
+*.token
+*.key
+secrets/
+credentials/
+.hf_token
+.github_token
+.hftoken
+
+# Local scratch / build artifacts
+*.bak
+*.bak-*
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+node_modules/
+
+# Large model artifacts / patches that are fetched at deploy time, not committed
+*.safetensors
+*.gguf
+*.bin
