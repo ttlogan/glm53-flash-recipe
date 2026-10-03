@@ -30,6 +30,7 @@ real hostnames are replaced with `head`/`worker`.
 
 - **`GLM-5.3-Flash NVFP4`** (`glm5_next`) — GLM 5.3 Flash, NVFP4 weights,
   multimodal (vision), 1M context. Served as `dgx_hobo_default`.
+  **HF repo:** [https://huggingface.co/nvidia/GLM-5.3-Flash-NVFP4](https://huggingface.co/nvidia/GLM-5.3-Flash-NVFP4) (NVIDIA ModelOpt quant of [zai-org/GLM-5.3-Flash](https://huggingface.co/zai-org/GLM-5.3-Flash))
 - Loaded via the **tonyd2wild `vllm-glm53-flash`** container image (GB10/sm_121
   build), in two lanes:
   - **no-drafter**: `ghcr.io/tonyd2wild/vllm-glm53-flash:sm121-v8`
