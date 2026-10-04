@@ -13,6 +13,8 @@ case "$MODEL" in glm|qwen|deepseek) ;; *) echo "unknown model '$MODEL'" >&2; exi
 LEO=192.168.0.226
 RAPH=192.168.0.143
 # User owning the rootless podman containers + the ssh to the worker.
+# Set RUNTIME_USER to the account that owns the rootless vLLM containers on the
+# cluster (e.g. the deploy account). Default is a generic service username.
 RUNTIME_USER="${RUNTIME_USER:-vllm}"
 VLLM_SCRIPT="$HOME/glm53-vllm.sh"
 # head's own key -> worker. Array form so ssh + flags are separate argv entries.
@@ -23,7 +25,7 @@ VLLM="bash $VLLM_SCRIPT"
 case "$MODEL" in
   glm)        MDIR=/models/glm-5.3-flash-nvfp4 ;;
   qwen)       MDIR=/models/qwen3.8-flash-next-uncensored-nvfp4-fp8ple ;;
-  deepseek)   MDIR=/models/deepseek-v4-flash-vision-exp-ablit-nvfp4 ;;
+  deepseek)   MDIR=/models/orcarouter-deepseek-v4-flash-vision-uncensored ;;
 esac
 [ -f "$MDIR/config.json" ] || { echo "MODEL MISSING: $MDIR" >&2; exit 4; }
 

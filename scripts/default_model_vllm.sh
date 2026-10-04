@@ -20,6 +20,8 @@ set -euo pipefail
 # ---------- configurable ----------
 DEFAULT_MODEL=deepseek
 # User that owns the rootless podman containers and drives the launcher/ssh.
+# Set RUNTIME_USER to the account that owns the rootless vLLM containers on the
+# cluster (e.g. the deploy account). Default is a generic service username.
 RUNTIME_USER="${RUNTIME_USER:-vllm}"
 RECIPE_ROOT=/opt/vllm-recipe
 RECIPE="$RECIPE_ROOT/recipes/orcarouter-eugr-1m.yaml"   # live recipe (1M ctx, T3, b12x)

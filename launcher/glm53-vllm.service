@@ -6,10 +6,11 @@ Wants=network-online.target
 [Service]
 Type=oneshot
 # User that owns the rootless podman containers. Set to the real service user
-# (the account under which the rootless vLLM containers run).
+# (the account under which the rootless vLLM containers run). `%h` resolves to
+# that user's home, so no absolute home path is hardcoded.
 User=vllm
 ExecStartPre=/bin/sleep 30
-ExecStart=/home/vllm/glm53-vllm.sh 0
+ExecStart=%h/glm53-vllm.sh 0
 RemainAfterExit=yes
 Restart=on-failure
 RestartSec=30
